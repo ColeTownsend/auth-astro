@@ -26,9 +26,7 @@ export default (config: AstroAuthConfig = {}): AstroIntegration => ({
 			config.prefix ??= '/api/auth'
 
 			if (config.injectEndpoints !== false) {
-				const { dirname, join } = await import('node:path')
-				const currentDir = dirname(import.meta.url.replace('file://', ''))
-				const entrypoint = join(currentDir + '/api/[...auth].ts')
+				const entrypoint = '@coletownsend/auth-astro/auth-template'
 				injectRoute({
 					pattern: config.prefix + '/[...auth]',
 					entrypoint: entrypoint,
